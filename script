@@ -30,3 +30,19 @@ alias kdp='kubectl describe pod'
 alias svc='kubectl get service'
 alias k=kubectl
 alias all='kubectl get all'
+
+
+-------------
+To check the version available
+curl -s https://packages.cloud.google.com/apt/dists/kubernetes-xenial/main/binary-amd64/Packages | grep Version | awk '{print $2}'
+
+
+Please do not install kubeadm first because it will install kubelet and kubectl with latest/default version automatically.
+
+But in the current case kubectl and kubelet packages are installed by dependencies when we install kubeadm, so all these three packages should be installed with a specific version:
+
+sudo apt-get install -qy kubelet=<version> kubectl=<version> kubeadm=<version>
+
+
+
+-------------
